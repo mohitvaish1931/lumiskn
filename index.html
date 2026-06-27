@@ -13,6 +13,11 @@
 </head>
 <body>
   
+  <!-- Cinematic Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-counter" id="preloader-counter">0</div>
+    <div class="preloader-bg"></div>
+  </div>
   <!-- Custom Cursor Elements -->
   <div class="custom-cursor"></div>
   <div class="custom-cursor-dot"></div>
@@ -60,14 +65,16 @@
         
         <div class="container hero-container">
           <div class="hero-content">
-            <h1 class="hero-title">
+            <h1 class="hero-title gsap-reveal">
               The Science of <br/>
               <span class="italic text-serif">Ageless Beauty</span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description gsap-reveal">
               Elevate your skin's architecture with bespoke, medical-grade treatments designed for profound cellular rejuvenation.
             </p>
-            <a href="#services" class="btn btn-primary inverse hoverable" data-target="services">Discover Treatments</a>
+            <div class="gsap-reveal">
+              <a href="#services" class="btn btn-primary inverse hoverable" data-target="services">Discover Treatments</a>
+            </div>
           </div>
         </div>
       </section>
@@ -99,6 +106,16 @@
               <h3>Sensory Rest</h3>
               <p>Clinical efficacy shouldn't require clinical discomfort. Experience profound relaxation within our serene studio ambiance during every session.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFINITE MARQUEE -->
+      <section class="marquee-section">
+        <div class="marquee-container">
+          <div class="marquee-text gsap-marquee">
+            <span>THE SCIENCE OF AGELESS BEAUTY &mdash; CELLULAR REJUVENATION &mdash; CLINICAL PRECISION &mdash; THE SCIENCE OF AGELESS BEAUTY &mdash; </span>
+            <span>THE SCIENCE OF AGELESS BEAUTY &mdash; CELLULAR REJUVENATION &mdash; CLINICAL PRECISION &mdash; THE SCIENCE OF AGELESS BEAUTY &mdash; </span>
           </div>
         </div>
       </section>

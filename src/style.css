@@ -44,7 +44,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -229,11 +228,12 @@ img {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 56px;
+  font-size: clamp(56px, 6vw, 100px);
   font-weight: 300;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   margin-bottom: 24px;
   color: var(--text-primary);
+  line-height: 1;
 }
 
 .section-title.inverse {
@@ -265,25 +265,27 @@ img {
   border: 1px solid var(--champagne-dark);
   border-radius: 50%;
   position: fixed;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   transition: width 0.4s ease, height 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
   display: none;
-  mix-blend-mode: difference;
+  will-change: transform;
 }
 
 .custom-cursor-dot {
   width: 4px;
   height: 4px;
-  background-color: var(--oyster);
+  background-color: var(--champagne-dark);
   border-radius: 50%;
   position: fixed;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   display: none;
-  mix-blend-mode: difference;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -314,9 +316,7 @@ img {
 }
 
 .main-header.scrolled {
-  background: rgba(249, 248, 246, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(249, 248, 246, 0.98);
   border-bottom: 1px solid var(--border-delicate);
   height: 80px;
 }
@@ -422,6 +422,7 @@ img {
 @media (max-width: 992px) {
   .header-container { padding: 0 20px; }
   .mobile-nav-toggle { display: block; }
+  .header-actions { display: none; }
   .nav-menu {
     position: fixed;
     top: 0;
@@ -493,6 +494,7 @@ img {
   z-index: 0;
   opacity: 0.6; /* Moody, dark overlay */
   transform: scale(1.05);
+  will-change: transform;
   animation: heroZoomIn 20s linear infinite alternate;
 }
 
@@ -523,11 +525,11 @@ img {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: 85px;
+  font-size: clamp(85px, 10vw, 160px);
   font-weight: 300;
   color: var(--oyster);
-  line-height: 1;
-  letter-spacing: -2px;
+  line-height: 0.9;
+  letter-spacing: -3px;
   margin-bottom: 30px;
 }
 
@@ -1197,8 +1199,10 @@ img {
   gap: 16px;
 }
 
-.footer-links-col a {
+.footer-links-col a, .footer-links-col button {
   font-size: 13px;
+  color: var(--oyster);
+  text-align: left;
 }
 
 .footer-bottom {
@@ -1436,4 +1440,57 @@ img {
 }
 .has-error input, .has-error select {
   border-bottom-color: #ff6b6b;
+}
+
+/* ==========================================
+   ULTRA ADVANCED (PRELOADER & MARQUEE)
+   ========================================== */
+.preloader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.preloader-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--onyx);
+  z-index: -1;
+}
+.preloader-counter {
+  font-family: var(--font-sans);
+  font-size: 8vw;
+  font-weight: 300;
+  color: var(--oyster);
+}
+.gsap-reveal {
+  opacity: 0;
+}
+
+.marquee-section {
+  padding: 60px 0;
+  overflow: hidden;
+  background: var(--bg-main);
+  border-top: 1px solid var(--border-delicate);
+}
+.marquee-container {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.marquee-text {
+  display: inline-flex;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: clamp(60px, 8vw, 150px);
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  color: var(--onyx);
+  will-change: transform;
+}
+.marquee-text span {
+  padding-right: 40px;
 }

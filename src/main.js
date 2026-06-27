@@ -1,6 +1,107 @@
 import './style.css'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
+
+gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
+  /* ==========================================
+     0. LENIS SMOOTH SCROLL
+     ========================================== */
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+  
+  // Sync Lenis with GSAP ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+
+  /* ==========================================
+     0.5 CINEMATIC PRELOADER
+     ========================================== */
+  let counter = 0;
+  const counterElement = document.getElementById('preloader-counter');
+  const preloader = document.getElementById('preloader');
+  
+  if (counterElement && preloader) {
+    const updateCounter = setInterval(() => {
+      counter += Math.floor(Math.random() * 5) + 1;
+      if (counter >= 100) counter = 100;
+      counterElement.textContent = counter + '%';
+      
+      if (counter === 100) {
+        clearInterval(updateCounter);
+        
+        const tl = gsap.timeline();
+        tl.to(counterElement, { opacity: 0, duration: 0.4 })
+          .to('.preloader-bg', { height: 0, duration: 1.5, ease: 'power4.inOut' })
+          .set(preloader, { display: 'none' })
+          .fromTo('.gsap-reveal', 
+            { y: 60, opacity: 0, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }, 
+            { y: 0, opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1.2, stagger: 0.2, ease: 'power3.out' }, "-=0.8");
+      }
+    }, 20);
+  }
+
+  /* ==========================================
+     0.6 GSAP INFINITE MARQUEE
+     ========================================== */
+  const marquee = document.querySelector('.gsap-marquee');
+  if (marquee) {
+    gsap.to(marquee, {
+      xPercent: -50,
+      ease: "none",
+      duration: 30,
+      repeat: -1
+    });
+  }
+
+  /* ==========================================
+     0.7 MAGNETIC BUTTONS
+     ========================================== */
+  const magneticBtns = document.querySelectorAll('.btn-primary, .btn-secondary');
+  magneticBtns.forEach(btn => {
+    let rect;
+    btn.addEventListener('mouseenter', () => {
+      rect = btn.getBoundingClientRect(); // Cache rect on enter to avoid layout thrashing
+    });
+    btn.addEventListener('mousemove', (e) => {
+      if (!rect) return;
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(btn, { x: x * 0.4, y: y * 0.4, duration: 0.3, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' });
+    });
+  });
+
+  /* ==========================================
+     0.8 SCROLLTRIGGER REVEALS
+     ========================================== */
+  const revealElements = document.querySelectorAll('.section-title, .section-subtitle, .pillar-item, .featured-row, .service-row-item');
+  revealElements.forEach(el => {
+    gsap.fromTo(el, 
+      { y: 60, opacity: 0 }, 
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1.2, 
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+        }
+      }
+    );
+  });
+
   /* ==========================================
      1. CUSTOM CURSOR TRACKING
      ========================================== */
@@ -8,12 +109,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursorDot = document.querySelector('.custom-cursor-dot');
 
   if (cursor && cursorDot) {
+    // Setup initial GSAP centering
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+    gsap.set(cursorDot, { xPercent: -50, yPercent: -50 });
+    
+    // Use highly optimized quickSetter for layout-free positioning
+    const xSetter = gsap.quickSetter(cursor, "x", "px");
+    const ySetter = gsap.quickSetter(cursor, "y", "px");
+    const dotXSetter = gsap.quickSetter(cursorDot, "x", "px");
+    const dotYSetter = gsap.quickSetter(cursorDot, "y", "px");
+
     document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-      
-      cursorDot.style.left = `${e.clientX}px`;
-      cursorDot.style.top = `${e.clientY}px`;
+      xSetter(e.clientX);
+      ySetter(e.clientY);
+      dotXSetter(e.clientX);
+      dotYSetter(e.clientY);
     });
 
     document.addEventListener('mouseleave', () => {
@@ -37,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
 
   /* ==========================================
      2. SPA ROUTING & VIEW SWITCHING
@@ -119,11 +230,16 @@ document.addEventListener('DOMContentLoaded', () => {
      3. HEADER SCROLL & MOBILE MENU TOGGLE
      ========================================== */
   const header = document.getElementById('main-header');
+  let isHeaderScrolled = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    const shouldBeScrolled = window.scrollY > 50;
+    if (shouldBeScrolled !== isHeaderScrolled) {
+      isHeaderScrolled = shouldBeScrolled;
+      if (isHeaderScrolled) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     }
   });
 
