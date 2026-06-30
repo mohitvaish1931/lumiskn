@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/png" href="/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumi SKN | Aesthetic & Laser Clinic</title>
   
@@ -25,9 +25,8 @@
   <!-- Global Header (Fixed) -->
   <header class="main-header" id="main-header">
     <div class="header-container">
-      <div class="logo">
-        <span class="logo-text">Lumi</span>
-        <span class="logo-subtext">SKN</span>
+      <div class="logo" style="display: flex; align-items: center;">
+        <img src="/logo.png" alt="Lumi SKN Logo" style="height: 60px; width: auto; object-fit: contain;">
       </div>
       
       <!-- Mobile Toggle -->
@@ -105,6 +104,42 @@
               <div class="pillar-number">03</div>
               <h3>Sensory Rest</h3>
               <p>Clinical efficacy shouldn't require clinical discomfort. Experience profound relaxation within our serene studio ambiance during every session.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUR TEAM SECTION -->
+      <section class="team-section" id="team" style="padding: var(--section-spacing) 0;">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-subtitle">The Experts</span>
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-desc">Guided by clinical excellence and aesthetic mastery.</p>
+          </div>
+          <div class="team-grid-top" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 60px;">
+            <div class="team-card hoverable" style="text-align: center; overflow: hidden;">
+              <img src="/Director.jpg" alt="Clinic Director" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+              <div class="team-info" style="padding-top: 20px;">
+                <h3 style="font-family: var(--font-serif); font-size: 24px; margin-bottom: 8px;">Clinic Director</h3>
+                <p style="color: var(--text-secondary); font-size: 15px;">Leading our vision of ageless beauty.</p>
+              </div>
+            </div>
+            <div class="team-card hoverable" style="text-align: center; overflow: hidden;">
+              <img src="/Doctor.jpg" alt="Lead Doctor" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+              <div class="team-info" style="padding-top: 20px;">
+                <h3 style="font-family: var(--font-serif); font-size: 24px; margin-bottom: 8px;">Lead Doctor</h3>
+                <p style="color: var(--text-secondary); font-size: 15px;">Master of aesthetic architecture.</p>
+              </div>
+            </div>
+          </div>
+          <div class="team-grid-bottom" style="display: flex; justify-content: center; margin-top: 40px;">
+            <div class="team-card hoverable" style="text-align: center; overflow: hidden; width: 100%; max-width: 900px;">
+              <img src="/team.jpg" alt="Our Team" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+              <div class="team-info" style="padding-top: 20px;">
+                <h3 style="font-family: var(--font-serif); font-size: 24px; margin-bottom: 8px;">Our Specialists</h3>
+                <p style="color: var(--text-secondary); font-size: 15px;">Dedicated to your transformative journey.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -315,7 +350,14 @@
               <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 16px; line-height: 1.8;">
                 We invite you to experience the Lumi SKN standard. Whether you seek targeted correction or ageless maintenance, our concierge will design a bespoke pathway exclusively for you.
               </p>
-              <button class="btn btn-primary hoverable btn-book" data-action="open-booking">Open Booking Concierge</button>
+              <button class="btn btn-primary hoverable btn-book" data-action="open-booking" style="margin-bottom: 40px;">Open Booking Concierge</button>
+              
+              <!-- Treatment Images on Blank Slots -->
+              <div class="treatment-slots" style="display: flex; gap: 15px; margin-top: 20px;">
+                <img src="/src/assets/service_rejuvenation.png" alt="Rejuvenation" style="width: 30%; border-radius: 8px; object-fit: cover;">
+                <img src="/src/assets/service_laser.png" alt="Laser" style="width: 30%; border-radius: 8px; object-fit: cover;">
+                <img src="/src/assets/service_facial.png" alt="Facial" style="width: 30%; border-radius: 8px; object-fit: cover;">
+              </div>
             </div>
 
             <!-- Right: Details -->
@@ -448,9 +490,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-text">Lumi</span>
-            <span class="logo-subtext">SKN</span>
+          <div class="logo" style="display: flex; align-items: center; margin-bottom: 15px;">
+            <img src="/logo.png" alt="Lumi SKN Logo" style="height: 80px; width: auto; object-fit: contain;">
           </div>
           <p>Architecting ageless beauty through precision science and clinical artistry.</p>
         </div>
@@ -474,8 +515,14 @@
         </div>
       </div>
       
-      <div class="footer-bottom">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
         <span>&copy; <span id="current-year"></span> Lumi SKN Aesthetics.</span>
+        
+        <div class="social-links" style="display: flex; gap: 15px;">
+          <a href="#" aria-label="Twitter/X"><svg width="20" height="20" fill="currentColor"><use href="/icons.svg#x-icon"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" fill="currentColor"><use href="/icons.svg#social-icon"></use></svg></a>
+        </div>
+        
         <span>Beverly Hills, CA</span>
       </div>
     </div>
