@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Flatpickr for Premium Date Selection -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 </head>
 <body>
   
@@ -918,12 +921,24 @@
             <div class="form-group glass-group" style="display: flex; gap: 15px;">
               <div style="flex: 1;">
                 <label for="date">Preferred Date</label>
-                <input type="date" id="date" required style="width: 100%;">
+                <input type="text" id="date" required placeholder="Select a date" style="width: 100%;">
                 <span class="error-msg">Please select a date</span>
               </div>
               <div style="flex: 1;">
                 <label for="time">Preferred Time</label>
-                <input type="time" id="time" required style="width: 100%;">
+                <select id="time" required style="width: 100%;">
+                  <option value="" disabled selected>Select a slot</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="01:00 PM">01:00 PM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="03:00 PM">03:00 PM</option>
+                  <option value="04:00 PM">04:00 PM</option>
+                  <option value="05:00 PM">05:00 PM</option>
+                  <option value="06:00 PM">06:00 PM</option>
+                  <option value="07:00 PM">07:00 PM</option>
+                </select>
                 <span class="error-msg">Please select a time</span>
               </div>
             </div>
@@ -990,6 +1005,18 @@
     </div>
   </div>
 
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script type="module" src="/src/main.js"></script>
+  <script>
+    // Initialize Flatpickr
+    flatpickr("#date", {
+      altInput: true,
+      altFormat: "F j, Y",
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      disableMobile: true // Forces the premium custom UI even on mobile
+    });
+  </script>
 </body>
 </html>
