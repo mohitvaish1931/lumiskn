@@ -1719,3 +1719,6 @@ select#time option {
   background-color: var(--onyx);
   color: #fff;
 }
+
+.date-time-group { display: flex; gap: 15px; }
+@media (max-width: 600px) { .date-time-group { flex-direction: column; gap: 10px; } }
