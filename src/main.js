@@ -428,15 +428,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const fields = [
         { id: 'name', valFn: val => val.trim().length > 0 },
-        { id: 'email', valFn: val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) }
+        { id: 'email', valFn: val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) },
+        { id: 'date', valFn: val => val !== '' },
+        { id: 'time', valFn: val => val !== '' }
       ];
-      // Note: we removed interest validation since we inject selectedServices dynamically.
 
       fields.forEach(field => {
         const elem = document.getElementById(field.id);
         if (elem) {
           const isValid = field.valFn(elem.value);
-          const formGroup = elem.closest('.form-group');
+          const formGroup = elem.closest('div'); // Get nearest div wrapper
           
           if (!isValid) {
             formGroup.classList.add('has-error');
@@ -451,14 +452,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Construct WhatsApp Message
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
-        const interest = document.getElementById('interest').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
         
-        let interestText = interest;
+        let interestText = 'General Inquiry';
         if (typeof selectedServices !== 'undefined' && selectedServices.length > 0) {
           interestText = selectedServices.join(', ');
         }
         
-        const message = `Hello Lumi SKN Concierge!\n\nI would like to request a bespoke consultation.\n\n*Name:* ${name}\n*Email:* ${email}\n*Selected Services:* ${interestText}\n\nPlease let me know your earliest availability.`;
+        const message = `Hello Lumi SKN Concierge!\n\nI would like to secure an appointment.\n\n*Name:* ${name}\n*Email:* ${email}\n*Preferred Slot:* ${date} at ${time}\n*Selected Services:* ${interestText}\n\nPlease confirm if this slot is available.`;
         
         // Clinic Phone Number (Include country code without '+')
         const phoneNumber = '919784640942';

@@ -915,16 +915,17 @@
               <span class="error-msg">Please provide a valid email</span>
             </div>
             
-            <div class="form-group glass-group">
-              <label for="interest">Primary Interest</label>
-              <select id="interest" required>
-                <option value="" disabled selected>Select a focus area</option>
-                <option value="Anti-Aging & Wrinkles">Anti-Aging & Wrinkles</option>
-                <option value="Acne & Texture">Acne & Texture</option>
-                <option value="Pigmentation & Sun Damage">Pigmentation & Sun Damage</option>
-                <option value="General Maintenance">General Maintenance</option>
-              </select>
-              <span class="error-msg">Please select an interest</span>
+            <div class="form-group glass-group" style="display: flex; gap: 15px;">
+              <div style="flex: 1;">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" required style="width: 100%;">
+                <span class="error-msg">Please select a date</span>
+              </div>
+              <div style="flex: 1;">
+                <label for="time">Preferred Time</label>
+                <input type="time" id="time" required style="width: 100%;">
+                <span class="error-msg">Please select a time</span>
+              </div>
             </div>
             
             <button type="submit" class="btn btn-primary w-100 hoverable btn-glass-submit">
