@@ -1012,13 +1012,7 @@
       altFormat: "F j, Y",
       dateFormat: "Y-m-d",
       minDate: "today",
-      disableMobile: true, // Forces the premium custom UI even on mobile
-      disable: [
-        function(date) {
-          // Disable Tuesdays (0 = Sunday, 1 = Monday, 2 = Tuesday)
-          return (date.getDay() === 2);
-        }
-      ]
+      disableMobile: true // Forces the premium custom UI even on mobile
     });
   </script>
 </body>
