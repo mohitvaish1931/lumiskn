@@ -833,9 +833,8 @@
               <div class="details-block">
                 <h3>Clinical Hours</h3>
                 <ul class="hours-list">
-                  <li><span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span></li>
-                  <li><span>Saturday</span> <span>10:00 AM - 4:00 PM</span></li>
-                  <li><span>Sunday</span> <span>Closed</span></li>
+                  <li><span>Wednesday - Monday</span> <span>11:00 AM - 7:00 PM</span></li>
+                  <li><span>Tuesday</span> <span>Closed</span></li>
                 </ul>
               </div>
             </div>
@@ -928,7 +927,6 @@
                 <label for="time">Preferred Time</label>
                 <select id="time" required style="width: 100%;">
                   <option value="" disabled selected>Select a slot</option>
-                  <option value="10:00 AM">10:00 AM</option>
                   <option value="11:00 AM">11:00 AM</option>
                   <option value="12:00 PM">12:00 PM</option>
                   <option value="01:00 PM">01:00 PM</option>
@@ -1014,7 +1012,13 @@
       altFormat: "F j, Y",
       dateFormat: "Y-m-d",
       minDate: "today",
-      disableMobile: true // Forces the premium custom UI even on mobile
+      disableMobile: true, // Forces the premium custom UI even on mobile
+      disable: [
+        function(date) {
+          // Disable Tuesdays (0 = Sunday, 1 = Monday, 2 = Tuesday)
+          return (date.getDay() === 2);
+        }
+      ]
     });
   </script>
 </body>
