@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = `Hello Lumi SKN Concierge!\n\nI would like to request a bespoke consultation.\n\n*Name:* ${name}\n*Email:* ${email}\n*Focus Area:* ${interest}\n\nPlease let me know your earliest availability.`;
         
         // Clinic Phone Number (Include country code without '+')
-        const phoneNumber = '916377335341'; 
+        const phoneNumber = '919784640942';
         
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         

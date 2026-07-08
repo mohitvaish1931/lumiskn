@@ -258,11 +258,14 @@
         <div class="container">
           
           <!-- Filters -->
-          <div class="catalog-filters">
-            <button class="filter-btn active hoverable" data-filter="all">All Protocols</button>
-            <button class="filter-btn hoverable" data-filter="facial">Facials & Peels</button>
-            <button class="filter-btn hoverable" data-filter="laser">Laser & Energy</button>
-            <button class="filter-btn hoverable" data-filter="inject">Injectables</button>
+          <div class="catalog-filters" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px;">
+            <button class="filter-btn active hoverable" data-filter="all">All Services</button>
+            <button class="filter-btn hoverable" data-filter="facial">Facial & Peels</button>
+            <button class="filter-btn hoverable" data-filter="laser">Laser & HIFU</button>
+            <button class="filter-btn hoverable" data-filter="inject">Botox & Fillers</button>
+            <button class="filter-btn hoverable" data-filter="acne">Acne</button>
+            <button class="filter-btn hoverable" data-filter="makeup">Makeup</button>
+            <button class="filter-btn hoverable" data-filter="hair">Hair</button>
           </div>
 
           <!-- Catalog List -->
@@ -270,11 +273,22 @@
             
             <div class="service-row-item hoverable" data-category="facial">
               <div class="service-meta">
-                <h3>Signature Hydra-Infusion</h3>
-                <span class="price-duration">60 Min &mdash; $225</span>
+                <h3>Medi Facial</h3>
               </div>
               <div class="service-desc">
-                <p>A multi-step medical facial utilizing vortex technology to deeply cleanse, extract impurities, and bathe the skin in proprietary serums.</p>
+                <p>Hydra facial • Oxygeneo • Bridal Medi Facial • Deep Cleansing</p>
+              </div>
+              <div class="service-action">
+                <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
+              </div>
+            </div>
+
+            <div class="service-row-item hoverable" data-category="facial">
+              <div class="service-meta">
+                <h3>Peels</h3>
+              </div>
+              <div class="service-desc">
+                <p>Acne Peel • Party Peel • Pumpkin Peel • Brightening Peel</p>
               </div>
               <div class="service-action">
                 <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
@@ -283,24 +297,34 @@
 
             <div class="service-row-item hoverable" data-category="laser">
               <div class="service-meta">
-                <h3>ClearSkin IPL Therapy</h3>
-                <span class="price-duration">45 Min &mdash; $350</span>
+                <h3>Laser Treatment</h3>
               </div>
               <div class="service-desc">
-                <p>Intense Pulsed Light technology targeting vascular lesions, rosacea, and sun damage for an impeccably even skin tone.</p>
+                <p>Laser Hair Reduction • Tattoo Removal • Red Carpet Facial (Laser Therapy)</p>
               </div>
               <div class="service-action">
                 <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
               </div>
             </div>
 
-            <div class="service-row-item hoverable" data-category="facial">
+            <div class="service-row-item hoverable" data-category="acne">
               <div class="service-meta">
-                <h3>Advanced Dermal Peel</h3>
-                <span class="price-duration">30 Min &mdash; $180</span>
+                <h3>Acne Treatment</h3>
               </div>
               <div class="service-desc">
-                <p>A customized clinical chemical peel formulated to accelerate cellular turnover and refine textural imperfections with minimal downtime.</p>
+                <p>Active Acne • Acne Scars • Acne Solution • Treatment PRP + Microneedling</p>
+              </div>
+              <div class="service-action">
+                <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
+              </div>
+            </div>
+
+            <div class="service-row-item hoverable" data-category="laser">
+              <div class="service-meta">
+                <h3>HIFU</h3>
+              </div>
+              <div class="service-desc">
+                <p>Jawline Contouring • Double Chin Reduction • Face Lift • Neck Tightening</p>
               </div>
               <div class="service-action">
                 <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
@@ -309,11 +333,46 @@
 
             <div class="service-row-item hoverable" data-category="inject">
               <div class="service-meta">
-                <h3>Neuromodulator Therapy</h3>
-                <span class="price-duration">30 Min &mdash; Price Consult</span>
+                <h3>Botox</h3>
               </div>
               <div class="service-desc">
-                <p>Precision injections to temporarily relax facial muscles, smoothing dynamic rhytids (wrinkles) while maintaining natural expression.</p>
+                <p>Forehead Lines • Frown Lines • Crows Lines • Bunny Lines • Masseter Botox (Jaw Slimming)</p>
+              </div>
+              <div class="service-action">
+                <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
+              </div>
+            </div>
+
+            <div class="service-row-item hoverable" data-category="inject">
+              <div class="service-meta">
+                <h3>Fillers</h3>
+              </div>
+              <div class="service-desc">
+                <p>Lip Fillers • Chin Enhancement • Cheek Fillers • Under Eye Fillers • Jawline Fillers</p>
+              </div>
+              <div class="service-action">
+                <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
+              </div>
+            </div>
+
+            <div class="service-row-item hoverable" data-category="makeup">
+              <div class="service-meta">
+                <h3>Semi Permanent Makeup</h3>
+              </div>
+              <div class="service-desc">
+                <p>Lip Tinting • Eyebrow Microblading • BB Glow • Cheek Blushing</p>
+              </div>
+              <div class="service-action">
+                <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
+              </div>
+            </div>
+
+            <div class="service-row-item hoverable" data-category="hair">
+              <div class="service-meta">
+                <h3>Hair Care</h3>
+              </div>
+              <div class="service-desc">
+                <p>Meso Therapy • Hair GFC • Hair PRP • QR678</p>
               </div>
               <div class="service-action">
                 <button class="btn-text hoverable btn-book" data-action="open-booking">Book Session</button>
@@ -364,13 +423,13 @@
             <div class="contact-details-wrapper">
               <div class="details-block">
                 <h3>Our Studio</h3>
-                <p class="info-text">1240 Luxury Avenue<br>Suite 400<br>Beverly Hills, CA 90210</p>
+                <p class="info-text">91, Ram Gali No 6<br>Rajapark<br>Jaipur</p>
                 <a href="#" class="btn-text hoverable">Get Directions</a>
               </div>
               
               <div class="details-block">
                 <h3>Direct Line</h3>
-                <p class="info-text">+1 (310) 555-0199</p>
+                <p class="info-text">+91 9784640942</p>
                 <p class="info-text" style="font-size:16px;">concierge@lumiskn.com</p>
               </div>
 
@@ -523,7 +582,7 @@
           <a href="#" aria-label="Instagram"><svg width="20" height="20" fill="currentColor"><use href="/icons.svg#social-icon"></use></svg></a>
         </div>
         
-        <span>Beverly Hills, CA</span>
+        <span>Jaipur, India</span>
       </div>
     </div>
   </footer>
