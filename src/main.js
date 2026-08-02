@@ -456,7 +456,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const time = document.getElementById('time').value;
         
         let interestText = 'General Inquiry';
-        if (typeof selectedServices !== 'undefined' && selectedServices.length > 0) {
+        
+        // Check if we are on a specific treatment landing page
+        const specificTreatmentInput = document.getElementById('specific-treatment');
+        
+        if (specificTreatmentInput && specificTreatmentInput.value) {
+          interestText = specificTreatmentInput.value;
+        } else if (typeof selectedServices !== 'undefined' && selectedServices.length > 0) {
           interestText = selectedServices.join(', ');
         }
         
